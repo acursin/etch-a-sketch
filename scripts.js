@@ -26,6 +26,7 @@ function createSketchpad(size) {
     }
 }
 
+// Uses code from https://stackoverflow.com/questions/1484506/random-color-generator
 function getRandomColor() {
     return "#" + Math.random().toString(16).slice(-6);
 }
