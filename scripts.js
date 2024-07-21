@@ -10,6 +10,9 @@ function createSketchpad(size) {
         box.style.cssText = `width: ${boxSize}px; height: ${boxSize}px;`;
         box.addEventListener("mouseenter", (event) => {
             event.currentTarget.classList.add("filled");
+            if (event.currentTarget.style.opacity < 1) {
+                event.currentTarget.style.opacity = +event.currentTarget.style.opacity + 0.1;
+            }
         });
         container.appendChild(box);
     }
@@ -22,9 +25,13 @@ button.addEventListener("click", () => {
     let newSize = 0;
     while (!validSize) {
         newSize = prompt("Enter size from 1 to 100:", "");
-        if (newSize >= 1 && newSize <= 100) validSize = true;
+        if (newSize >= 1 && newSize <= 100 || newSize === null) validSize = true;
     }
+
+    if (newSize === null) return;
+
     createSketchpad(newSize);
+    return;
 });
 
 createSketchpad(STARTING_SIZE);
