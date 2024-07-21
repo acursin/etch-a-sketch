@@ -25,7 +25,6 @@ body {
 
 .box {
     flex: none;
-    border: 1px solid black;
     opacity: 0;
 }
 
