@@ -17,3 +17,7 @@
     flex: none;
     border: 1px solid black;
 }
+
+.filled {
+    background-color: black;
+}
