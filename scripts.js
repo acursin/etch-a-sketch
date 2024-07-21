@@ -14,10 +14,20 @@ function createSketchpad(size) {
             } else {
                 event.currentTarget.style.opacity = 1;
             }
-            event.currentTarget.style.backgroundColor = "black";
+            if (rainbow === true) {
+                if (event.currentTarget.style.backgroundColor === "") {
+                    event.currentTarget.style.backgroundColor = getRandomColor();
+                }
+            } else {
+                event.currentTarget.style.backgroundColor = "black";
+            }
         });
         container.appendChild(box);
     }
+}
+
+function getRandomColor() {
+    return "#" + Math.random().toString(16).slice(-6);
 }
 
 const newSketchpadBtn = document.querySelector(".sketchpad-btn");
@@ -45,6 +55,19 @@ opacityBtn.addEventListener("click", (event) => {
 
     opacity = false;
     event.currentTarget.textContent = "Opacity: OFF";
+    return;
+});
+
+const rainbowBtn = document.querySelector(".rainbow-btn");
+rainbowBtn.addEventListener("click", (event) => {
+    if (rainbow === false) {
+        rainbow = true;
+        event.currentTarget.textContent = "Rainbow: ON";
+        return;
+    }
+
+    rainbow = false;
+    event.currentTarget.textContent = "Rainbow: OFF";
     return;
 });
 
